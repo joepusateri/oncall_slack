@@ -22,10 +22,6 @@ Here are the necessary permissions:
 * channels:manage
 * channels:read
 * chat:write
-* groups:read
-* im:read
-* mpim:read
-* users.profile:read
 * users:read
 * users:read.email
 
