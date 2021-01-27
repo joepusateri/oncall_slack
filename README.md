@@ -28,14 +28,14 @@ Here are the necessary permissions:
 ## Running
 
 Parameters:
-```
+
 * k = PagerDuty API Key (required) - This is an API token (global or user)
 * t = Slack bot Token (required) - A bot in Slack needs to be first created and the necessary permissions granted.
 * m = Message to send (required) - This message will be sent to all users who are oncall
 * r = Range to include oncall users. (optional) - Can be either a 'd' for 1 day or a 'w' for 1 week ahead. Defaults to 'd'
 * c = Conversation name (optional) - The conversation name to invite users and send the message to. Defaults to "oncall_YYYY-MM-DD" using the current date.
 * d (optional) - include this to print debug messages
-```
+
 Example:
 ```
 ./oncall -k 0123456789001234567890 -t xoxb-xxxxxx-xxxxx -m "You will be going oncall in the next day"
