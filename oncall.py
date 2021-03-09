@@ -24,14 +24,16 @@ def get_oncalls(session, range):
     if DEBUG: print(f'   {me}: Getting on-calls range:{range} -> {until_date}')
 
     for oncall in session.iter_all('oncalls', params={'until': until_date}):
-        if DEBUG: print(f'{oncall["escalation_level"]} {oncall["user"]["summary"]}')
-        if not (oncall["user"]["id"] in pd_user_map):
-            user = session.rget(f'/users/{oncall["user"]["id"]}')
-            if DEBUG: print(f'user:{user}')
-            pd_user_map[user['id']] = user['email']
+        try:
+            if DEBUG: print(f'{oncall["escalation_level"]} {oncall["user"]["summary"]}')
+            if not (oncall["user"]["id"] in pd_user_map):
+                user = session.rget(f'/users/{oncall["user"]["id"]}')
+                if DEBUG: print(f'user:{user}')
+                pd_user_map[user['id']] = user['email']
 
-        if DEBUG: print(f'pd_user_map:{pd_user_map}')
-
+            if DEBUG: print(f'pd_user_map:{pd_user_map}')
+        except:
+            print(f'User not found {oncall["user"]["id"]}')
     return pd_user_map
 
 
